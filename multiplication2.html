@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>multiplication</title>
+  </head>
+  <body>
+    <h1>multiplication 조건문</h1>
+      <script>
+      var strN = prompt("몇 단을 구할까요?");
+      var n = (strN);
+      if(n < 2 || n > 9){
+        console.log("2 이상 9 이하의 숫자를 적어주세요.");
+      } else{
+        document.write("<h2>" + n + "단 구한 값입니다.</h2>");
+        for (var i = 1; i <= 9; i++){
+        document.write(n + " * " + i + " = " + n * i + "<br>");
+        }
+      }
+
+
+      </script>
+
+  </body>
+</html>
