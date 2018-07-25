@@ -5,12 +5,18 @@
     <title></title>
   </head>
   <body>
-    <h1>Hello, level1</h1>
-    <p id="text">여기에 내용</p>
+
     <script>
-    var p = document.getElementById('text');
-    p.innerHTML = "hello, JS";
-    console.log("로그로그");
+    var str;
+    while(true){
+    str = prompt("아무거나 적어주세요.");
+      document.write(str + "<br>" );
+      if(str === "q"){
+      break;
+      }
+    }
+    document.write("끝");
+
     </script>
   </body>
 </html>
