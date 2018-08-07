@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 사용자가 숫자 넣음
+        // game 으로
+    function user(){
+        var num = [];
+        var i = prompt(" 숫자를 입력해 주세요. ");
+        num = i.split("");
+        
+       for(var x = 0; x < 3; x++){
+           num.push(Number(num.shift()));
+      }
+       return num;
+    };
+      // 컴퓨터가 숫자를 랜덤으로 섞음.
+      // game 으로
+    function random(){
+        var ran = [];
+        for(var i = 0; i < 3; i ++){
+            ran = math.floor(math.random() * 9) + 1;
+        }
+        return ran;
+    }
+      //볼체크 
+      // allCheck 으로
+    function ballCheck(num , ran){
+       var ball = 0;
+      for(var i = 0; i < 3; i++){
+        if( ran.includes(num[i]) && num[i] !== ran[i]){
+            ball++;
+        }
+      }
+      return ball;
+    }
+    
+     // 스트라이크 체크
+     // allCheck으로
+    function strikeCheck(num, ran){
+       var strike;
+       for(var i = 0; i < 3; i++){
+           if(ran[i] === num[i]){
+               strike++
+           }
+       }
+       return strike;
+    } 
+     // 게임이 어떻게 되는지 체크해줌
+     // game으로
+    function allCheck(ball, strike){
+      if(ball === 0 && stirke === 0){
+          alert("nothing")
+      }else if(ball !== 0 && stirke === 0){
+          alert(ball +" ball ")
+      }else if(ball === 0 && strike !== 0){
+          alert(strike + " strike ")
+      } else{
+          alert(strike + " strike" + ball + " ball ")
+      }
+    }
+    // 3 스트라이크 게임끝
+    function endOfGame(stirke){
+        while(strike < 10){
+            if(strike === 3){
+            stirke++;
+            break;
+            }
+        }
+        return;
+    }
+    function main(){
+      var numList = [1,2,3,4,5,6,7,8,9]
+       var num = user();
+        var ball =ballCheck();
+        var strike = strikeCheck();
+        allCheck(ball, strike);
+        endOfGame(strike);
+        console.log("3 strike!! 게임끝!")
+        } 
+
+        main();
+ </script>
+    
+</body>
+</html>
