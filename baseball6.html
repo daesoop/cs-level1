@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 사용자가 숫자 넣음
+        // game 으로
+    function user(){
+        var num = [];
+        var x =[];
+        for(var i = 0; i < 3; i++){
+        x[i] = prompt("숫자 일의자리 수를 세번 입력해주세요.");
+        num = x;
+        }
+        return num;
+    }
+      // 컴퓨터가 숫자를 랜덤으로 섞음.
+      // game 으로
+      function random(){
+        var ran = [];
+        var ran2;
+        for(var i = 0; i<=2; i++){
+            ran2 = Math.floor(Math.random() * 10);
+           //0부터2까지의 값을 이미 알고 있어야한다.
+           for(var a = 0; a<=2; a++){
+
+            if(ran[i] == ran2){
+
+                ran[i] = ran[i]+1;
+            }else{
+				ran[i] = ran2;
+            }
+           }
+        }       
+        console.log(ran);
+
+        return ran;
+        };
+        
+
+      // 볼체크는 컴퓨터와 사용자가 넣은 숫자가 볼인지 아닌지 계산하는 함수
+      // allCheck 으로
+    function ballCheck(num , ran){
+            alert(ran.indexOf(num))
+            for (var i = 0; i < 3; i++) {
+                alert(ran.indexOf(num[i]))
+                if (ran.indexOf(num[i]) && ran[i] !== num[i]) {
+
+                    ball++;
+                }
+            }
+            return ball;
+        }
+    
+     // 스트라이크 체크
+     // allCheck으로
+    function strikeCheck(num, ran){
+       var strike = 0;
+       for(var i = 0; i < 3; i++){
+           if(ran[i] == num[i]){
+               strike++
+           }
+       }
+       return strike;
+    } 
+     // 게임이 어떻게 되는지 체크해줌
+     // game으로
+    function allCheck(ball, strike){
+        //alert("ballChekck::::"+ball)
+      if(ball === 0 && strike === 0){
+          alert("nothing")
+      }else if(ball !== 0 && stirke === 0){
+          alert(ball +" ball ")
+      }else if(ball === 0 && strike !== 0){
+          alert(strike + " strike ")
+      } else{
+          alert(strike + " strike" + ball + " ball ")
+      }
+    }
+    // 3 스트라이크 게임끝
+    function endOfGame(strike){
+            if(strike === 3){
+                console.log("3 strike!! 게임끝!")
+            return true;
+        }
+    return false;
+        }
+    
+    function main(){
+        var count = 10;
+        while(strike!==3){
+            count--;
+       var num = user();
+       var ran = random();
+        var ball = ballCheck(num,ran);
+        alert("main:::"+ball)
+        var strike = strikeCheck(num,ran);
+        allCheck(ball, strike);
+        endOfGame(strike);
+              }
+        } 
+
+        main();
+ </script>
+    
+</body>
+</html>
