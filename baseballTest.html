@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 사용자가 숫자 넣음
+        // game 으로
+        function user() {
+            var num = [];
+            var numPut = prompt("숫자를 연달아 3개를 입력해주세요 ex) '123' '689' '345'");
+            num = (numPut.split("").map(Number));
+             console.log(num)
+             
+            
+            return num;
+    }
+      // 컴퓨터가 숫자를 랜덤으로 섞음.
+      // game 으로
+      function random(){
+        var list = [0,1,2,3,4,5,6,7,8,9];
+       var ran = [];
+       for (var i = 0; i < 3; i++) {
+       var select = Math.floor(Math.random() * list.length);
+        ran[i] = list.splice(select, 1)[0];
+                 }
+               
+        console.log(ran);
+        return ran;
+        };  
+
+      // 볼체크는 컴퓨터와 사용자가 넣은 숫자가 볼인지 아닌지 계산하는 함수
+      function ballCheck(num, ran) {
+        var ball = 0
+        for (var i = 0; i < 3; i++) {
+            if (num[i] != ran[i] && ran.includes(num[i])) {
+                ball++; //*** 여기 indent 4회
+            }
+        }
+        return ball;
+      };
+    
+     // 스트라이크 체크
+    function strikeCheck(num, ran){
+       var strike = 0;
+       for(var i = 0; i < 3; i++){
+           if(ran[i] == num[i]){
+               strike++
+           }
+       }
+       return strike;
+    } 
+    // 3 스트라이크 게임끝
+    function endOfGame(strike){
+            if(strike === 3){
+                console.log("3 strike!! 게임끝!")
+            return true;
+        }
+    return false;
+        }
+    
+    function game(){
+        var ran = random();
+       var count = 10;
+        while(strike !== 3){
+         count--;
+         if(count === 0){
+         break;
+         }
+         var num = user();
+         var ball = ballCheck(num, ran)
+         var strike = strikeCheck(num,ran);
+         endOfGame(strike); 
+         alert((count-1)+'left : ' +strike +'strike /    '+ball+'ball');        
+        }
+     }
+        game();   
+        
+ </script>
+    
+</body>
+</html>
