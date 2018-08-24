@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+      <input type = 'text' id = 'n1'><br>
+      <input type = 'text' id = 'op'><br>
+      <input type = 'text' id = 'n2'><br>
+      <button onclick = 'main()'> 재원이형 꼬추</button>
+    </div>
+    <div id = 'output'></div>
+    <script>
+    function main(){
+     var n1 = document.getElementById('n1').value;
+     var op = document.getElementById('op').value;
+     var n2 = document.getElementById('n2').value;
+     var num = Number(n1);
+     var num2 = Number(n2);
+
+     var out = document.getElementById('output');
+     var str = '';
+     if(op === '+'){
+         str += (num + num2)
+     }else if(op === '-'){
+        str += (num - num2)
+     
+     }else if(op=== '*'){
+        str += (num * num2)
+     }else if(op === '/'){
+        str += (num / num2)
+     }else{
+         str += '+,-,*,/ 만 사용해주세요.'
+     }     
+     out.innerHTML = str;
+    }
+    </script>
+</body>
+</html>
