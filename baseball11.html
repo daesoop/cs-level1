@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Baseball Game</h1>
+    <button onclick = 'main()'>Play</button><br>
+    <div id = 'out'>Play를 눌러주세요.</div>
+    <script>
+    var number = {}
+    number.user = function(){
+        var num = [];
+        var pro = prompt('숫자 세개를 연달아 입력해주세요.');
+        num  = pro.split('').map(Number);
+        console.log(num);
+        return num;
+
+        };
+    
+    number.random = function(){
+        var list = [0,1,2,3,4,5,6,7,8,9];
+       var ran = [];
+       for (var i = 0; i < 3; i++) {
+       var select = Math.floor(Math.random() * list.length);
+        ran[i] = list.splice(select, 1)[0];
+                 }       
+        console.log(ran);
+        return ran;
+    };    
+    
+    var check = {};
+    check.ball = function(ran, num){
+     var ball= 0;
+     for(var i = 0; i < 3; i++){
+         if(ran[i] !== num[i] && ran.includes(num[i])){
+             ball++;
+         }
+     }
+     return ball;
+    };
+    
+    check.strike = function(ran, num){
+     var strike = 0;
+     for(var i = 0; i < 3; i++){
+         if(ran[i] === num[i]){
+             strike++;
+         }
+     }
+     return strike;
+    };
+
+    check.theEnd = function(strike){
+        if(strike === 3){
+            console.log('게임끝');
+            alert('3 strike 게임이 끝났습니다.');
+     var out = document.getElementById('out');
+     out.innerHTML = print();
+            return true;
+        }
+        return false;
+    };
+    function print(){
+        return '3 strike 게임이 끝났습니다.';
+    };
+   
+    function main(){
+        var ran = number.random();
+        var count = 10;
+        print();
+        while(strike !== 3){
+            count--;
+            if(count === 0){
+                break;
+            }
+        var num = number.user();
+        var ball = check.ball(ran, num);
+        var strike = check.strike(ran, num);
+        var end = check.theEnd(strike, print());
+        alert(count + 'left' + strike + 'strike' + ball + 'ball');
+        }
+    }
+    
+    </script>
+
+</body>
+</html>
